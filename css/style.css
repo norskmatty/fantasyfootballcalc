@@ -1,0 +1,170 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.buttons {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	display: flex;
+	width: 300px;
+	justify-content: space-between;
+}
+
+.entry {
+	display: flex;
+	flex-direction: row;
+	width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.passingentry, .rushingentry {
+	width: 250px;
+	margin-top: 5px;
+}
+
+.submit {
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50px;
+}
+
+.title, .toprow, .passyds, .tpassyds, .passtouch, .tpasstouch, .rushyds, .trushyds, .rushtouch, .trushtouch, .ints, .tints, .fumb, .tfumb, .teamname, .tteam, .name, .tname {
+	padding: 0;
+	border: 0;
+	margin: 0;
+}
+
+#players {
+	display: flex;
+	flex-direction: column;
+	width: 673.5px;
+	margin-top: 25px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.newPlayer1, .newPlayer2 {
+	display: flex;
+	width: 670px;
+	height: 25px;
+	text-align: right;
+	font-family: "Slabo";
+	font-size: 18px;
+	border-top: solid 1px black;
+}
+
+.newPlayer1 {
+	background-color: lightyellow;
+}
+
+.newPlayer2 {
+	background-color: lightblue;
+}
+
+.title, .toprow {
+	display: flex;
+	font-family: "Slabo";
+	font-size: 16px;
+	font-weight: bold;
+	width: 670px;
+	height: 22px;
+	background-color: lightgrey;
+}
+
+.toprow {
+	text-align: center;
+}
+
+.blank {
+	width: 270px;
+	border-right: solid 1px black;
+}
+
+.passingstats, .rushingstats {
+	border-right: solid 1px black;
+}
+
+.passingstats {
+	width: 150px;
+}
+
+.rushingstats {
+	width: 105px;
+}
+
+.biggerspace {
+	width: 135px;
+}
+
+.name, .teamname {
+	text-align: left;
+	font-family: "IM Fell Great Primer";
+}
+
+.name, .tname {
+	width: 185px;
+	padding-left: 5px;
+}
+
+.teamname, .tteam {
+	width: 50px;
+	padding-left: 5px;
+}
+
+.passtouch, .tpasstouch, .rushtouch, .trushtouch, .ints, .tints, .fumb, .tfumb, .recs, .trecs, .trectouch, .rectouch, .rbtrushtouch  {
+	width: 45px;
+	text-align: right;
+}
+
+.passyds, .tpassyds, .rushyds, .trushyds, .trecyds, .recyds {
+	width: 60px;
+	text-align: right;
+}
+
+.fantasypoints, .tfantasypoints {
+	width: 90px;
+	text-align: right;
+}
+
+.space, .tspace {
+	width: 5px;
+}
+
+.rank, .trank {
+	font-family: "Slabo";
+	text-align: right;
+	width: 30px;
+}
+
+.tteam, .tints, .trushtouch, .trectouch {
+	border-right: solid 1px black;
+}
+
+.tints, .ints, .tfumb, .fumb, .passyds, .tpassyds, .passtouch, .tpasstouch, .rushyds, .trushyds, .rushtouch, .trushtouch, .trecs, .recs, .trectouch, .rectouch, .recyds, .trecyds, .rbtrushtouch {
+	padding-right: 5px;
+}
+
+.space, .name, .teamname, .passyds, .passtouch, .ints, .rushyds, .rushtouch, .fumb, .recs, .rectouch, .recyds {
+	border-right: dashed 1px grey;
+}
+
+.rbrushingstats {
+	width: 105px;
+	border-right: solid 1px black;
+}
+
+.rbtrushtouch {
+	border-right: solid 1px black;
+}
+
+.rbreceivingstats {
+	border-right: solid 1px black;
+	width: 150px;
+	text-align: center;
+}

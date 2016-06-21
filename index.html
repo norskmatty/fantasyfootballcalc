@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fantasy Football Calculator</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=IM+Fell+Great+Primer|Slabo' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<div class="pointentry">
+		<form class="points">
+			<div class="entry">
+				<div class="passingentry">
+					Points per Passing Yard:<br>
+					<input type="text" id="passing_yards_value" size="4" required> </input>
+				</div>
+				<div class="passingentry">
+					Points per Passing Touchdown:<br>
+					<input type="text" id="passing_touch_value" size="4" required> </input>
+				</div>
+				<div class="passingentry">
+					Points Lost per Interception:<br>
+					<input type="text" id="passing_ints_value" size="4" required> </input>
+				</div>
+			</div>
+			<div class="entry">
+				<div class="rushingentry">
+					Points per Rushing Yard:<br>
+					<input type="text" id="rushing_yards_value" size="4" required> </input>
+				</div>
+				<div class="rushingentry">
+					Points per Rushing Touchdown:<br>
+					<input type="text" id="rushing_touch_value" size="4" required> </input>
+				</div>
+				<div class="rushingentry">
+					Points Lost per Fumble:<br>
+					<input type="text" id="fumble_value" size="4" required> </input>
+				</div>
+			</div>
+			<div class="entry">
+				<div class="rushingentry">
+					Points per Reception:<br>
+					<input type="text" id="receptions_value" size="4" required> </input>
+				</div>
+				<div class="rushingentry">
+					Points per Receving Yard:<br>
+					<input type="text" id="receiving_yards_value" size="4" required> </input>
+				</div>
+				<div class="rushingentry">
+					Points per Receiving Touchdown:<br>
+					<input type="text" id="receiving_touch_value" size="4" required> </input>
+				</div>
+			</div>
+			<div class="entry">
+				<div class="submit">
+					<input type="submit" id="qbs" value="QBs!"> </input>
+				</div>
+				<div class="submit">
+					<input type="submit" id="rbs" value="RBs!"> </input>
+				</div>
+				<div class="submit">
+					<input type="submit" id="wrs" value="WRs!"> </input>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<div id="players">
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
