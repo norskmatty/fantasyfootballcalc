@@ -64,13 +64,13 @@ html {
 	width: 50px;
 	background-color: #66FF66;
 	border: solid 1px #66FF66;
-	box-shadow: inset -1px -1px 2px #009933;
+	box-shadow: inset -1px -1px 2px #33CC00;
 	font-size: 16px;
 	font-family: "Slabo";
 }
 
 input[type="text"]:focus {
-	box-shadow: inset 2px 2px 5px #009933;
+	box-shadow: inset 2px 2px 5px #33CC00;
 } 
 
 .passingentry, .rushingentry {
@@ -88,7 +88,7 @@ input[type="text"]:focus {
 input[type="submit"] {
 	padding: 3px;
 	font-family: 'IM Fell Great Primer';
-	background-color: #009933;
+	background-color: #33CC00;
 	font-size: 22px;
 	border: none;
 	box-shadow: 0 5px #66FF66;
@@ -97,12 +97,12 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
 	background-color: #66FF66;
-	box-shadow: 0 5px #009933;
+	box-shadow: 0 5px #33CC00;
 }
 
 input[type="submit"]:active {
 	background-color: #66FF66;
-	box-shadow: 0 1px #009933;
+	box-shadow: 0 1px #33CC00;
 	margin-top: 4px;
 }
 
