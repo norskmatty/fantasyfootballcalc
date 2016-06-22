@@ -10,6 +10,18 @@ var ptRecept = 0.5;
 var ptRecYard = 0.1;
 var ptRecTD = 6;
 
+$(document).ready(function() {
+	$('#passing_yards_value').val('');
+	$('#passing_touch_value').val('');
+	$('#passing_ints_value').val('');
+	$('#rushing_yards_value').val('');
+	$('#rushing_touch_value').val('');
+	$('#fumble_value').val('');
+	$('#receptions_value').val('');
+	$('#receiving_yards_value').val('');
+	$('#receiving_touch_value').val('');
+})
+
 $('#getPoints').on('click', function() {
 	ptPassYard = getPassYardPoints();
 	ptPassTD = getPassTDPoints();
@@ -135,6 +147,43 @@ $('#wrs').on('click', function() {
 
 	for (var i = 0, len = wideouts.length; i < len; i++) {
 		displayRBPlayer(wideouts[i]);
+		rank++;
+	}
+
+	rank = 1;
+	bg = 0;
+
+	$('#players').css('border', 'solid 2px black');
+
+	return false;
+});
+
+$('#tes').on('click', function() {
+	ptPassYard = getPassYardPoints();
+	ptPassTD = getPassTDPoints();
+	ptINT = getINTPoints();
+	ptRushYard = getRushYardPoints();
+	ptRushTD = getRushTDPoints();
+	ptFumble = getFumblePoints();
+	ptRecept = getReceptionPoints();
+	ptRecYard = getRecYardPoints();
+	ptRecTD = getRecTDPoints();
+
+	$('#players').html('');
+	$('#players').append('<div class="toprow"> <div class="blank"> </div> <div class="rbrushingstats"> Rushing Stats </div> <div class="rbreceivingstats"> Receiving Stats </div> <div class="biggerspace"> </div> </div>')
+	$('#players').append('<div class="title"> <div class="trank"> No. </div> <div class="tspace"> </div> <div class="tname"> Player </div> <div class="tteam"> Team </div> <div class="trushyds"> Yds </div> <div class="rbtrushtouch"> TD </div> <div class="trecs"> Rec </div> <div class="trecyds"> Yds </div> <div class="trectouch"> TD </div> <div class="tfumb"> Fum </div> <div class="tfantasypoints"> Points </div>') 
+	
+	for (var i = 0, len = tightends.length; i < len; i++) {
+		calcFantasyRBPoints(tightends[i]);
+	};
+
+	tightends.sort(function(a,b) {
+		return b.fantpts - a.fantpts;
+	});
+
+
+	for (var i = 0, len = tightends.length; i < len; i++) {
+		displayRBPlayer(tightends[i]);
 		rank++;
 	}
 
@@ -1745,6 +1794,54 @@ var runningbacks = [
     rectds: 4,
     fumblost: 1,
     fantpts: 0
+},
+
+{
+name: 'C.J. Spiller',
+team: 'NO',
+rushyards: 112,
+rushtds: 0,
+rec: 34,
+recyards: 239,
+rectds: 2,
+fumblost: 0,
+fantpts: 0
+},
+
+{
+name: 'Lance Dunbar',
+team: 'DAL',
+rushyards: 67,
+rushtds: 0,
+rec: 21,
+recyards: 215,
+rectds: 0,
+fumblost: 0,
+fantpts: 0
+},
+
+{
+name: 'Joique Bell',
+team: 'DET',
+rushyards: 311,
+rushtds: 4,
+rec: 22,
+recyards: 286,
+rectds: 0,
+fumblost: 0,
+fantpts: 0
+},
+
+{
+name: 'James White',
+team: 'NE',
+rushyards: 56,
+rushtds: 2,
+rec: 40,
+recyards: 410,
+rectds: 4,
+fumblost: 0,
+fantpts: 0
 }
 
 ];
@@ -2562,6 +2659,885 @@ var wideouts = [
     rec: 39,
     recyards: 485,
     rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Cecil Shorts',
+    team: 'HOU',
+    rushyards: 47,
+    rushtds: 0,
+    rec: 42,
+    recyards: 484,
+    rectds: 2,
+    fumblost: 1,
+    fantpts: 0 
+},
+
+{
+    name: 'Davante Adams',
+    team: 'GB',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 50,
+    recyards: 483,
+    rectds: 1,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Seth Roberts',
+    team: 'OAK',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 32,
+    recyards: 480,
+    rectds: 5,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Tavon Austin',
+    team: 'STL',
+    rushyards: 434,
+    rushtds: 4,
+    rec: 52,
+    recyards: 473,
+    rectds: 5,
+    fumblost: 2,
+    fantpts: 0
+},
+
+{
+    name: 'Devin Funchess',
+    team: 'CAR',
+    rushyards: 0,    
+    rushtds: 0,
+    rec: 31,
+    recyards: 473,
+    rectds: 5,
+    fumblost: 1,
+    fantpts: 0
+},
+
+{
+    name: 'Mike Wallace',
+    team: 'MIN',
+    rushyards: 6,
+    rushtds: 0,
+    rec: 39,    
+    recyards: 473,
+    rectds: 2,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Marquess Wilson',
+    team: 'CHI',
+    rushyards: 0,    
+    rushtds: 0,
+    rec: 28,
+    recyards: 464,
+    rectds: 1,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Brandon Coleman',    
+    team: 'NO',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 30,
+    recyards: 454,
+    rectds: 2,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Albert Wilson',
+    team: 'KC',
+    rushyards: 26,
+    rushtds: 0,
+    rec: 35,
+    recyards: 451,
+    rectds: 2,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Chris Hogan',
+    team: 'BUF',
+    rushyards: 4,
+    rushtds: 0,
+    rec: 36,
+    recyards: 450,
+    rectds: 2,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Corey Brown',
+    team: 'CAR',
+    rushyards: 38,
+    rushtds: 0,
+    rec: 31,
+    recyards: 447,
+    rectds: 4,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Jarius Wright',
+    team: 'MIN',
+    rushyards: 29,
+    rushtds: 0,
+    rec: 34,
+    recyards: 442,
+    rectds: 0,
+    fumblost: 1,
+    fantpts: 0
+},
+
+{
+    name: 'Kenny Stills',
+    team: 'MIA',    
+    rushyards: 0,
+    rushtds: 0,
+    rec: 27,
+    recyards: 440,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Harry Douglas',
+    team: 'TEN',
+    rushyards: (-6),
+    rushtds: 0,
+    rec: 36,
+    recyards: 411,
+    rectds: 2,
+    fumblost: 1,    
+    fantpts: 0
+},
+
+{
+    name: 'Kendall Wright',
+    team: 'TEN',
+    rushyards: 17,
+    rushtds: 0,
+    rec: 36,
+    recyards: 408,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Dez Bryant',
+    team: 'DAL',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 31,
+    recyards: 401,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Dwayne Harris',
+    team: 'NYG',
+    rushyards: 12,
+    rushtds: 0,
+    rec: 36,
+    recyards: 396,
+    rectds: 4,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Quinton Patton',
+    team: 'SF',
+    rushyards: 5,
+    rushtds: 0,
+    rec: 30,
+    recyards: 394,
+    rectds: 1,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Mohamed Sanu',
+    team: 'CIN',
+    rushyards: 71,
+    rushtds: 2,    
+    rec: 33,
+    recyards: 394,
+    rectds: 0,
+    fumblost: 2,
+    fantpts: 0
+},
+
+{
+    name: 'Bryan Walters',
+    team: 'JAX',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 32,
+    recyards: 368,
+    rectds: 1,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Jeremy Butler',
+    team: 'BAL',    
+    rushyards: 0,
+    rushtds: 0,
+    rec: 31,
+    recyards: 363,
+    rectds: 0,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Chris Givens',
+    team: 'BAL',
+    rushyards: 18,
+    rushtds: 0,
+    rec: 20,
+    recyards: 353,
+    rectds: 1,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Lance Moore',
+    team: 'DET',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 29,
+    recyards: 337,
+    rectds: 4,
+    fumblost: 1,
+    fantpts: 0
+},
+
+{
+    name: 'Riley Cooper',
+    team: 'PHI',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 21,
+    recyards: 327,
+    rectds: 2,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Quincy Enunwa',
+    team: 'NYJ',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 22,
+    recyards: 315,
+    rectds: 0,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Darrius Heyward Bey',
+    team: 'PIT',    
+    rushyards: 0,
+    rushtds: 0,
+    rec: 21,
+    recyards: 314,
+    rectds: 2,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Josh Huff',
+    team: 'PHI',    
+    rushyards: 0,
+    rushtds: 0,
+    rec: 27,
+    recyards: 312,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'J.J. Nelson',
+    team: 'ARI',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 11,
+    recyards: 299,
+    rectds: 2,
+    fumblost: 1,
+    fantpts: 0
+},
+
+{
+    name: 'Nelson Agholor',
+    team: 'PHI',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 23,
+    recyards: 283,
+    rectds: 1,
+    fumblost: 0,
+    fantpts: 0
+}
+
+];
+
+var tightends = [
+	{
+    name: 'Rob Gronkowski',
+    team: 'NE',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 72,
+    recyards: 1176,
+    rectds: 11,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Greg Olson',
+    team: 'CAR',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 77,
+    recyards: 1104,
+    rectds: 7,
+    fumblost: 1,
+    fantpts: 0
+},
+
+{
+    name: 'Delanie Walker',
+    team: 'TEN',
+    rushyards: 36,
+    rushtds: 0,
+    rec: 94,
+    recyards: 1088,    
+    rectds: 6,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Gary Barnidge',
+    team: 'CLE',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 79,
+    recyards: 1043,
+    rectds: 9,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Jordan Reed',
+    team: 'WAS',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 87,
+    recyards: 952,
+    rectds: 11,
+    fumblost: 2,
+    fantpts: 0
+},
+
+{
+    name: 'Travis Kelce',
+    team: 'KC',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 72,
+    recyards: 875,
+    rectds: 5,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Zach Ertz',
+    team: 'PHI',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 75,
+    recyards: 853,
+    rectds: 2,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Benjamin Watson',
+    team: 'NO',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 74,
+    recyards: 825,
+    rectds: 6,
+    fumblost: 1,    
+    fantpts: 0
+},
+
+{
+    name: 'Jason Witten',
+    team: 'DAL',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 77,
+    recyards: 713,
+    rectds: 3,
+    fumblost: 1,
+    fantpts: 0
+},
+
+{
+    name: 'Jacob Tamme',
+    team: 'ATL',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 59,
+    recyards: 657,
+    rectds: 1,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Antonio Gates',
+    team: 'SD',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 56,
+    recyards: 630,
+    rectds: 5,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Tyler Eifert',
+    team: 'CIN',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 52,
+    recyards: 615,
+    rectds: 13,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Jimmy Graham',
+    team: 'SEA',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 48,
+    recyards: 605,
+    rectds: 2,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{     
+    name: 'Eric Ebron',
+    team: 'DET',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 47,
+    recyards: 537,
+    rectds: 5,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Heath Miller',
+    team: 'PIT',
+    rushyards: 2,
+    rushtds: 0,
+    rec: 60,
+    recyards: 535, 
+    rectds: 2,
+    fumblost: 0,
+    fantpts:0
+},
+
+{
+    name: 'Charles Clay',
+    team: 'BUF',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 51,
+    recyards: 528,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Owen Daniels',
+    team: 'DEN',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 46,    
+    recyards: 517,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Richard Rodgers',
+    team: 'GB',
+    rushyards: 11,
+    rushtds: 0,
+    rec: 58,
+    recyards: 510,
+    rectds: 8,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Kyle Rudolph',    
+    team: 'MIN',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 49,
+    recyards: 495,
+    rectds: 5,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Coby Fleener',
+    team: 'IND',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 54,
+    recyards: 491,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Jared Cook',
+    team: 'STL',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 39,
+    recyards: 481,
+    rectds: 0,
+    fumblost: 1,
+    fantpts: 0
+},
+    
+{
+    name: 'Will Tye',
+    team: 'NYG',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 42,
+    recyards: 464,
+    rectds: 3,
+    fumblost: 1,
+    fantpts: 0
+},
+
+{
+    name: 'Julius Thomas',
+    team: 'JAX',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 46,
+    recyards: 455,
+    rectds: 5,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Martellus Bennett',
+    team: 'CHI',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 53,
+    recyards: 439,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Zach Miller',
+    team: 'CHI',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 34,
+    recyards: 439,
+    rectds: 5,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Ladarius Green',
+    team: 'SD',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 37,
+    recyards: 429,
+    rectds: 4,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Crockett Gillmore',
+    team: 'BAL',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 33,
+    recyards: 412,
+    rectds: 4,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Brent Celek',
+    team: 'PHI',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 27,
+    recyards: 398,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Jordan Cameron',
+    team: 'MIA',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 35,
+    recyards: 386,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+    
+{
+    name: 'Austin Seferian Jenkins',
+    team: 'TB',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 21,
+    recyards: 338,
+    rectds: 4,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Clive Walford',
+    team: 'OAK',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 28,
+    recyards: 329,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Vance McDonald',
+    team: 'SF',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 30,
+    recyards: 326,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Darren Fells',
+    team: 'ARI',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 21,
+    recyards: 311,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Anthony Fasano',
+    team: 'TEN',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 26,
+    recyards: 289,
+    rectds: 2,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Cameron Brate',
+    team: 'TB',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 23,
+    recyards: 288,
+    rectds: 3,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Mychel Rivera',
+    team: 'OAK',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 32,
+    recyards: 280,
+    rectds: 1,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Maxx Williams',
+    team: 'BAL',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 32,
+    recyards: 268,
+    rectds: 1,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Scott Chandler',
+    team: 'NE',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 23,
+    recyards: 259,
+    rectds: 4,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Lance Kendricks',
+    team: 'STL',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 25,
+    recyards: 245,
+    rectds: 2,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Marcedes Lewis', 
+    team: 'JAX',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 16,
+    recyards: 226,
+    rectds: 0,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{     
+    name: 'Larry Donnell',
+    team: 'NYG',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 29,
+    recyards: 223,
+    rectds: 2,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Jermaine Gresham',
+    team: 'CIN',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 18,
+    recyards: 223,
+    rectds: 1,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Luke Willson',
+    team: 'SEA',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 17,
+    recyards: 213,
+    rectds: 1,
+    fumblost: 0,
+    fantpts: 0
+},
+
+{
+    name: 'Vernon Davis',
+    team: 'DEN',
+    rushyards: 0,
+    rushtds: 0,
+    rec: 38,
+    recyards: 395,
+    rectds: 0,
     fumblost: 0,
     fantpts: 0
 }
