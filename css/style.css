@@ -5,6 +5,22 @@ html {
   box-sizing: inherit;
 }
 
+.everything {
+	display: flex;
+	width: 1400px;
+	justify-content: space-between;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 130px;
+}
+
+.footballfieldimg {
+	background-image: url(../images/footballfield2.jpg);
+	background-size: cover;
+	width: 300px;
+	height: 2000px;
+}
+
 #header {
 	width: 100%;
 	position: fixed;
@@ -45,8 +61,11 @@ html {
 }
 
 .pointentry {
-	overflow: auto;
-	padding-top: 130px;
+	display: flex;
+	flex-direction: column;
+}
+
+.points {
 	height: 360px;
 }
 
@@ -115,10 +134,11 @@ input[type="submit"]:active {
 #players {
 	display: flex;
 	flex-direction: column;
+	margin-top: -100px;
 	width: 674px;
-	margin-top: 25px;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 30px;
 }
 
 .newPlayer1, .newPlayer2 {
